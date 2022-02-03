@@ -70,7 +70,7 @@ async function _getBrowserList () {
 
             if (item.deviceType === 'real') {
                 osVersion.map((version) => {
-                    if (version.isRealDevice === 1) iosDeviceList.push(`lambdatest:${item.deviceName}@${version.version}:ios`);
+                    if (version.isRealDevice === 1) iosDeviceList.push(`${item.deviceName}@${version.version}:ios`);
                 });
             }
         });
@@ -83,7 +83,7 @@ async function _getBrowserList () {
                     const osVersion = device.osVersion;
 
                     osVersion.map((version) => {
-                        if (version.isRealDevice === 1) androidDeviceList.push(`lambdatest:${device.deviceName}@${version.version}:android`);
+                        if (version.isRealDevice === 1) androidDeviceList.push(`${device.deviceName}@${version.version}:android`);
                     });
                 }
             });

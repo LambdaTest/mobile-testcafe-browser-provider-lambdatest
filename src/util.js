@@ -12,8 +12,8 @@ const request   = promisify(_request, Promise);
 
 const PROCESS_ENVIRONMENT = process.env;
 const BASE_URL = 'https://beta-api.lambdatest.com/api/v1';
-const AUTOMATION_BASE_URL = 'https://mobile-api.lambdatest.com/mobile-automation/api/v1';
-const AUTOMATION_DASHBOARD_URL = 'https://appautomation.lambdatest.com';
+const AUTOMATION_BASE_URL = 'https://api.lambdatest.com/automation/api/v1';
+const AUTOMATION_DASHBOARD_URL = 'https://automation.lambdatest.com';
 const AUTOMATION_HUB_URL = process.env.LT_GRID_URL || 'beta-hub.lambdatest.com';
 const LT_AUTH_ERROR = 'Authentication failed. Please assign the correct username and access key to the LT_USERNAME and LT_ACCESS_KEY environment variables.';
 const LT_TUNNEL_NUMBER = process.env.LT_TUNNEL_NUMBER || 1;
@@ -70,7 +70,7 @@ async function _getBrowserList () {
 
             if (item.deviceType === 'real') {
                 osVersion.map((version) => {
-                    if (version.isRealDevice === 1) iosDeviceList.push(`lambdatest:${item.deviceName}@${version.version}:ios`);
+                    if (version.isRealDevice === 1) iosDeviceList.push(`${item.deviceName}@${version.version}:ios`);
                 });
             }
         });
@@ -83,7 +83,7 @@ async function _getBrowserList () {
                     const osVersion = device.osVersion;
 
                     osVersion.map((version) => {
-                        if (version.isRealDevice === 1) androidDeviceList.push(`lambdatest:${device.deviceName}@${version.version}:android`);
+                        if (version.isRealDevice === 1) androidDeviceList.push(`${device.deviceName}@${version.version}:android`);
                     });
                 }
             });
@@ -274,6 +274,8 @@ async function _updateJobStatus (sessionID, jobResult, jobData, possibleResults)
     if (testsFailed > 0) errorReason = testsFailed + ' tests failed';
     else if (jobResult === possibleResults.errored) errorReason = jobData.message;
     else if (jobResult === possibleResults.aborted) errorReason = 'Session aborted';
+
+    console.log('errorReason', errorReason, jobPassed);
 
     const options = {
         method: 'PATCH',

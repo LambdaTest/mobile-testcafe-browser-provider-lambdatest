@@ -21,7 +21,7 @@ export default {
     openedBrowsers: { },
     async _startBrowser (id, url, capabilities) {
         showTrace('StartBrowser Initiated for ', id);
-        const webDriver = await wd.promiseChainRemote(AUTOMATION_HUB_URL, 80, PROCESS_ENVIRONMENT.LT_USERNAME, PROCESS_ENVIRONMENT.LT_ACCESS_KEY);
+        const webDriver = await wd.promiseChainRemote(`https://${PROCESS_ENVIRONMENT.LT_USERNAME}:${PROCESS_ENVIRONMENT.LT_ACCESS_KEY}@${AUTOMATION_HUB_URL}:443/wd/hub`, 443);
         const pingWebDriver = () => ping(webDriver);
         
         showTrace('webDriver ', webDriver);
@@ -32,7 +32,8 @@ export default {
             showTrace('pingIntervalId', webDriver.pingIntervalId);
         });
         this.openedBrowsers[id] = webDriver;
-        showTrace(capabilities);
+        capabilities.isRealMobile = true;
+        
         try {
             await webDriver
                 .init(capabilities)
@@ -63,6 +64,8 @@ export default {
 
         const capabilities = await _parseCapabilities(id, browserName);
         
+        console.log('openBrowser', capabilities);
+
         if (capabilities instanceof Error) {
             showTrace('openBrowser error on  _parseCapabilities', capabilities);
             this.dispose();

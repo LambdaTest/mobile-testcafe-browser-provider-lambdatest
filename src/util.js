@@ -1,6 +1,7 @@
 'use strict';
 import _request from 'request';
 import Promise from 'pinkie';
+import axios from 'axios';
 import pify from 'pify';
 import parseCapabilities from 'desired-capabilities';
 import LambdaTestTunnel from '@lambdatest/node-tunnel';
@@ -10,10 +11,10 @@ const promisify = fn => pify(fn, Promise);
 const request   = promisify(_request, Promise);
 
 const PROCESS_ENVIRONMENT = process.env;
-const BASE_URL = 'https://api.lambdatest.com/api/v1';
-const AUTOMATION_BASE_URL = 'https://api.lambdatest.com/automation/api/v1';
-const AUTOMATION_DASHBOARD_URL = 'https://automation.lambdatest.com';
-const AUTOMATION_HUB_URL = process.env.LT_GRID_URL || 'hub.lambdatest.com';
+const BASE_URL = 'https://beta-api.lambdatest.com/api/v1';
+const AUTOMATION_BASE_URL = 'https://mobile-api.lambdatest.com/mobile-automation/api/v1';
+const AUTOMATION_DASHBOARD_URL = 'https://appautomation.lambdatest.com';
+const AUTOMATION_HUB_URL = process.env.LT_GRID_URL || 'beta-hub.lambdatest.com';
 const LT_AUTH_ERROR = 'Authentication failed. Please assign the correct username and access key to the LT_USERNAME and LT_ACCESS_KEY environment variables.';
 const LT_TUNNEL_NUMBER = process.env.LT_TUNNEL_NUMBER || 1;
 
@@ -53,24 +54,45 @@ function IsJsonString (str) {
 }
 
 async function _getBrowserList () {
-    const browserList = [];
-    const osList = await requestApi(`${BASE_URL}/capability?format=array`);
+    let devices = [];
 
-    for (const os of osList.os) {
-        const _browserList = await requestApi(`${BASE_URL}/capability?os=${os.id}&format=array`);
+    await axios.get(`${BASE_URL}/device?sort=brand&real=true`).then((res) => {
+        const iosDevices = res.data.ios;
 
-        for (const browser of _browserList) for (const version of browser.versions) browserList.push(`${browser.name}@${version.version}:${os.name}`);
-    }
-    const deviceList = await requestApi(`${BASE_URL}/device`);
+        const androidBrands = res.data.android;
 
-    for (const key in deviceList) {
-        if (Reflect.has(deviceList, key)) {
-            const element = deviceList[key];
+        const iosDeviceList = [];
 
-            for (const device of element) for (const osVersion of device.osVersion) browserList.push(`${device.deviceName}@${osVersion.version}:${key}`);
-        }
-    }
-    return browserList;
+        const androidDeviceList = [];
+
+        iosDevices.map((item) => {
+            const osVersion = item.osVersion;
+
+            if (item.deviceType === 'real') {
+                osVersion.map((version) => {
+                    if (version.isRealDevice === 1) iosDeviceList.push(`lambdatest:${item.deviceName}@${version.version}:ios`);
+                });
+            }
+        });
+
+        androidBrands.map((item) => {
+            const androidDevices = item.devices;
+
+            androidDevices.map((device) => {
+                if (device.deviceType === 'real') {
+                    const osVersion = device.osVersion;
+
+                    osVersion.map((version) => {
+                        if (version.isRealDevice === 1) androidDeviceList.push(`lambdatest:${device.deviceName}@${version.version}:android`);
+                    });
+                }
+            });
+        });
+
+        devices = [...devices, ...iosDeviceList, ...androidDeviceList];
+    });
+    
+    return devices;
 }
 async function _connect (tunnel) {
     try {
@@ -138,17 +160,26 @@ async function _parseCapabilities (id, capability) {
         const testcafeDetail = require('../package.json');
 
         // showTrace('capability', capability);
+        console.log(capability);
         const parseCapabilitiesData = parseCapabilities(capability)[0];
-        const browserName = parseCapabilitiesData.browserName;
+        const browserName = capability.split('@')[0];
         const browserVersion = parseCapabilitiesData.browserVersion;
         const platform = parseCapabilitiesData.platform;
-        const lPlatform = platform.toLowerCase();
+        const lPlatform = platform;
+
+        console.log(lPlatform, browserName);
         
         capabilities[id] = {
             tunnel: true,
 
             plugin: `${testcafeDetail.name}:${testcafeDetail.version}`
         };
+
+        if (lPlatform === 'android') capabilities[id].browserName = 'chrome';
+        else capabilities[id].browserName = 'safari';
+
+        console.log('capabilities[id]', capabilities[id]);
+
         if (['ios', 'android'].includes(lPlatform)) {
             capabilities[id].platformName = lPlatform;
             capabilities[id].deviceName = browserName;

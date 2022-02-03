@@ -1,0 +1,154 @@
+Verifying credentials
+Auth succeeded
+Checking for updates
+Binary already at latest version
+Starting tunnel
+Tunnel successfully initiated. You can start testing now
+Galaxy S8@9:android
+android Galaxy S8
+capabilities[id] { tunnel: true,
+  plugin: 'testcafe-browser-provider-lambdatest:2.0.15',
+  browserName: 'chrome' }
+openBrowser { tunnel: true,
+  plugin: 'testcafe-browser-provider-lambdatest:2.0.15',
+  browserName: 'chrome',
+  platformName: 'android',
+  deviceName: 'Galaxy S8',
+  platformVersion: '9',
+  name: 'TestCafe test run G~bKEHd',
+  tunnelName: 'TestCafe0_sarveshd-1643882811708' }
+helloOpen
+beta-hub.lambdatest.com
+EventEmitter {
+  domain: null,
+  _events: [Object: null prototype] {},
+  _eventsCount: 0,
+  _maxListeners: undefined,
+  sessionID: null,
+  httpAgent: null,
+  configUrl:
+   Url {
+     protocol: 'https:',
+     slashes: true,
+     auth:
+      'sarveshd:795K8PZ1WB1l1q9ISZO9YYeCdivrerLGKO9czXlaPbqC1Zu0A9',
+     host: 'beta-hub.lambdatest.com:443',
+     port: '443',
+     hostname: 'beta-hub.lambdatest.com',
+     hash: null,
+     search: null,
+     query: null,
+     pathname: '/wd/hub',
+     path: '/wd/hub',
+     href:
+      'https://sarveshd:795K8PZ1WB1l1q9ISZO9YYeCdivrerLGKO9czXlaPbqC1Zu0A9@beta-hub.lambdatest.com:443/wd/hub' },
+  sauceTestPageRoot: 'https://saucelabs.com/jobs',
+  sauceRestRoot: 'https://saucelabs.com/rest/v1',
+  noAuthConfigUrl:
+   Url {
+     protocol: 'https:',
+     slashes: true,
+     host: 'beta-hub.lambdatest.com:443',
+     port: '443',
+     hostname: 'beta-hub.lambdatest.com',
+     hash: null,
+     search: null,
+     query: null,
+     pathname: '/wd/hub',
+     path: '/wd/hub',
+     href:
+      'https://sarveshd:795K8PZ1WB1l1q9ISZO9YYeCdivrerLGKO9czXlaPbqC1Zu0A9@beta-hub.lambdatest.com:443/wd/hub' },
+  defaultCapabilities:
+   { browserName: 'firefox',
+     version: '',
+     javascriptEnabled: true,
+     platform: 'ANY' },
+  _httpConfig:
+   { timeout: 900000,
+     retries: -1,
+     retryDelay: 15,
+     baseUrl: undefined,
+     proxy: undefined,
+     rejectUnauthorized: true } }
+httpAgent https:
+ Running tests in:
+ - Chrome 96.0.4664.92 / Android 9 (
+ https://appautomation.lambdatest.com/logs/?sessionID=4756bc91-db05-4762-8193-7b6a9ee3445a
+ )
+
+ A set of examples that illustrate how to use TestCafe API
+ ✓ Text typing basics
+ ✖ Click an array of labels and then check their states
+
+   1) AssertionError: expected false to be truthy
+
+      Browser: Chrome 96.0.4664.92 / Android 9 (
+
+   https://appautomation.lambdatest.com/logs/?sessionID=4756bc91-db05-4762-8193-7b6a9ee3445a
+      )
+
+         19 |
+         20 |test('Click an array of labels and then check their states',
+      async t => {
+         21 |    for (const feature of page.featureList) {
+         22 |        await t
+         23 |            .click(feature.label)
+       > 24 |            .expect(feature.checkbox.checked).ok();
+         25 |    }
+         26 |});
+         27 |
+         28 |
+         29 |test('Dealing with text using keyboard', async t => {
+
+         at <anonymous>
+
+   (/Users/sarveshdubey/Documents/lambdatest/mobile-testcafe/testcafe-browser-provider-lambdatest/test/test.js:24:47)
+         at asyncGeneratorStep
+
+   (/Users/sarveshdubey/Documents/lambdatest/mobile-testcafe/testcafe-browser-provider-lambdatest/test/test.js:2:259)
+         at _next
+      (/Users/sarveshdubey/Documents/lambdatest/mobile-testcafe/testcafe-browser-provider-lambdatest/test/test.js:2:597)
+
+
+ ✓ Dealing with text using keyboard
+ ✖ Moving the slider
+
+   1) AssertionError: expected -8 to be above -8
+
+      Browser: Chrome 96.0.4664.92 / Android 9 (
+
+   https://appautomation.lambdatest.com/logs/?sessionID=4756bc91-db05-4762-8193-7b6a9ee3445a
+      )
+
+         41 |    const initialOffset = await
+      page.slider.handle.offsetLeft;
+         42 |
+         43 |    await t
+         44 |        .click(page.triedTestCafeCheckbox)
+         45 |        .dragToElement(page.slider.handle,
+      page.slider.tick.withText('9'))
+       > 46 |
+      .expect(page.slider.handle.offsetLeft).gt(initialOffset);
+         47 |});
+         48 |
+         49 |
+         50 |test('Dealing with text using selection', async t => {
+         51 |    await t
+
+         at <anonymous>
+
+   (/Users/sarveshdubey/Documents/lambdatest/mobile-testcafe/testcafe-browser-provider-lambdatest/test/test.js:46:48)
+         at asyncGeneratorStep
+
+   (/Users/sarveshdubey/Documents/lambdatest/mobile-testcafe/testcafe-browser-provider-lambdatest/test/test.js:2:259)
+         at _next
+      (/Users/sarveshdubey/Documents/lambdatest/mobile-testcafe/testcafe-browser-provider-lambdatest/test/test.js:2:597)
+
+
+ ✓ Dealing with text using selection
+ ✓ Handle native confirmation dialog
+ ✓ Pick option from select
+ ✓ Filling a form
+
+
+ 2/8 failed (1m 28s)

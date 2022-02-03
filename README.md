@@ -1,19 +1,19 @@
 # npm Plugin For TestCafe Integration With LambdaTest
 
-[![Build Status](https://travis-ci.org/LambdaTest/testcafe-browser-provider-lambdatest.svg)](https://travis-ci.org/LambdaTest/testcafe-browser-provider-lambdatest)
+[![Build Status](https://travis-ci.org/LambdaTest/testcafe-browser-provider-lambdatest.svg)](https://github.com/LambdaTest/mobile-testcafe-browser-provider-lambdatest)
 
 This plugin integrates [TestCafe](http://devexpress.github.io/testcafe) with the [LambdaTest Testing Cloud](https://www.lambdatest.com/).
 
 ## Install
 
 ```sh
-$ npm install testcafe-browser-provider-lambdatest
+$ npm install mobile-testcafe-browser-provider-lambdatest
 ```
 
 ## Usage
 Before using this plugin, save the LambdaTest username and access key to environment variables `LT_USERNAME` and `LT_ACCESS_KEY`, as described in [LambdaTest Documentation](https://www.lambdatest.com/support/docs/using-environment-variables-for-authentication-credentials).
 
-You can determine the available browser aliases by running
+You can determine the available real devices aliases by running
 
 ```sh
 $ testcafe -b lambdatest
@@ -23,13 +23,13 @@ If you run tests from the command line, use the browser alias when specifying br
 For Single Configuration
 
 ```sh
-$ testcafe "lambdatest:Chrome@74.0:Windows 8" "path/to/test/file.js"
+$ testcafe "lambdatest:Galaxy S8@9:android" "path/to/test/file.js"
 ```
 
 For Parallel/Multiple Configuration
 
 ```sh
-$ testcafe "lambdatest:Chrome@74.0:Windows 8","lambdatest:Chrome@75.0:Windows 10" "path/to/test/file.js"
+$ testcafe "lambdatest:Galaxy S8@9:android","lambdatest:Galaxy S8@7:android" "path/to/test/file.js"
 ```
 
 When you use API, pass the alias to the `browsers()` method:

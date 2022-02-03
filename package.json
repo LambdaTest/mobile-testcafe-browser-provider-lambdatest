@@ -1,9 +1,9 @@
 {
-  "name": "testcafe-browser-provider-lambdatest",
-  "version": "2.0.15",
-  "description": "lambdatest TestCafe browser provider plugin.",
-  "repository": "https://github.com/LambdaTest/testcafe-browser-provider-lambdatest",
-  "homepage": "https://github.com/LambdaTest/testcafe-browser-provider-lambdatest",
+  "name": "mobile-testcafe-browser-provider-lambdatest",
+  "version": "1.0.0",
+  "description": "lambdatest TestCafe browser provider plugin for Real Devices.",
+  "repository": "https://github.com/LambdaTest/mobile-testcafe-browser-provider-lambdatest",
+  "homepage": "https://github.com/LambdaTest/mobile-testcafe-browser-provider-lambdatest",
   "author": "LambdaTest <keys@lambdatest.com>",
   "contributors": [
     "LambdaTest <keys@lambdatest.com> (https://www.npmjs.com/~lambdatestdev)"

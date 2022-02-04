@@ -32,22 +32,12 @@ For Parallel/Multiple Configuration
 $ testcafe "lambdatest:Galaxy S8@9:android","lambdatest:Galaxy S8@7:android" "path/to/test/file.js"
 ```
 
-When you use API, pass the alias to the `browsers()` method:
-
-```js
-testCafe
-    .createRunner()
-    .src('path/to/test/file.js')
-    .browsers('lambdatest:Chrome@74.0:Windows 8')
-    .run();
-```
-
 ## Build Plugin Locally (Development Mode)
 
 1.  Clone this repository,
 2.  Rename Project
 ```sh
-$ mv testcafe-browser-provider-lambdatest lambdatest
+$ mv mobile-testcafe-browser-provider-lambdatest lambdatest
 ```
 3. Go to the project path
 ```sh
@@ -71,18 +61,6 @@ Use the following environment variables to set additional configuration options:
  - `LT_TEST_NAME` - Test name on LambdaTest.
  - `LT_BUILD` - Build name on LambdaTest.
  - `LT_CAPABILITY_PATH` - Path to a file which contains additional capability options as JSON file (eg. config.json)
-
-    ```js
-    {
-        "Chrome@63.0:Windows 8.1": {
-            "network": true,
-            "visual": true,
-            "timezone": "UTC+11:00"
-        }
-    }
-    ```
-    - `Chrome@63.0:Windows 8.1` is browser alias.
- - `LT_RESOLUTION` - allows setting the screen resolution for desktop browsers in the `${width}x${height}` format.
  - `LT_LOGFILE` - Logfile You can provide a specific path to this file. If you won't provide a path then the logs would be saved in your present working directory by the filename: tunnel.log.
  - `LT_VERBOSE` - true or false.
  - `LT_W3C` - true or false.
@@ -93,12 +71,10 @@ Use the following environment variables to set additional configuration options:
  - `LT_PROXY_PASS` - Password for the USERNAME option.
  - `LT_TUNNEL_NAME` - Human readable tunnel identifier (Name of the tunnel).
  - `LT_DIR` - Path of the local folder you want to test.
- - `LT_SELENIUM_VERSION` - Browser specific capability
  - `LT_CONSOLE` - true or false.
  - `LT_NETWORK` - true or false.
  - `LT_VIDEO` - true or false.
  - `LT_SCREENSHOT` - true or false.
- - `LT_TIMEZONE` - Configure tests to run on a custom time zone.
  - `LT_TUNNEL_NUMBER` - Number of tunnel to be spawned at a time.
  - `LOAD_BALANCED_MODE` - Load balancing between multiple tunnels spawned.
 
@@ -108,6 +84,8 @@ Example:
 export LT_RESOLUTION="1920x1080"
 export LT_TEST_NAME="Test TestCafe"
 export LT_BUILD="Build x"
+export LT_TUNNEL_NUMBER=2
+export LOAD_BALANCED_MODE=true
 testcafe "lambdatest:Chrome","lambdatest:Chrome@74.0:Windows 8" tests/
 ```
 

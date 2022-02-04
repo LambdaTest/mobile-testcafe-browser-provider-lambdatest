@@ -1,4 +1,4 @@
-# npm Plugin For TestCafe Integration With LambdaTest
+# npm Plugin For Mobile TestCafe Integration With LambdaTest
 
 [![Build Status](https://travis-ci.org/LambdaTest/testcafe-browser-provider-lambdatest.svg)](https://github.com/LambdaTest/mobile-testcafe-browser-provider-lambdatest)
 

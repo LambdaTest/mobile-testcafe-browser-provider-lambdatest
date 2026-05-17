@@ -2,14 +2,13 @@
 
 <p align="center">
   <a href="https://www.testmuai.com/"><img src="https://img.shields.io/badge/MADE%20BY%20TestMu%20AI-000000.svg?style=for-the-badge&labelColor=000" alt="Made by TestMu AI"></a>
-  <a href="https://www.npmjs.com/package/mobile-testcafe-browser-provider-lambdatest"><img src="https://img.shields.io/npm/v/mobile-testcafe-browser-provider-lambdatest.svg?style=for-the-badge&labelColor=000" alt="npm"></a>
   <a href="https://community.testmuai.com/"><img src="https://img.shields.io/badge/Join%20the%20community-blueviolet.svg?style=for-the-badge&labelColor=000000" alt="Community"></a>
 </p>
 
 
 
 
-This plugin integrates [TestCafe](http://devexpress.github.io/testcafe) with the TestMu AI (Formerly LambdaTest) Testing Cloud.
+This plugin integrates [TestCafe](http://devexpress.github.io/testcafe) with the TestMu AI (Formerly TestMu AI (Formerly LambdaTest)) Testing Cloud.
 
 
 
@@ -27,7 +26,7 @@ $ npm install mobile-testcafe-browser-provider-lambdatest
 
 ## Usage
 
-Before using this plugin, save the TestMu AI (Formerly LambdaTest) username and access key to environment variables `LT_USERNAME` and `LT_ACCESS_KEY`, as described in TestMu AI (Formerly LambdaTest) Documentation.
+Before using this plugin, save the TestMu AI (Formerly TestMu AI (Formerly LambdaTest)) username and access key to environment variables `LT_USERNAME` and `LT_ACCESS_KEY`, as described in TestMu AI (Formerly TestMu AI (Formerly LambdaTest)) Documentation.
 
 
 
@@ -121,9 +120,9 @@ Use the following environment variables to set additional configuration options:
 
 
 
- - `LT_TEST_NAME` - Test name on TestMu AI (Formerly LambdaTest).
+ - `LT_TEST_NAME` - Test name on TestMu AI (Formerly TestMu AI (Formerly LambdaTest)).
 
- - `LT_BUILD` - Build name on TestMu AI (Formerly LambdaTest).
+ - `LT_BUILD` - Build name on TestMu AI (Formerly TestMu AI (Formerly LambdaTest)).
 
  - `LT_CAPABILITY_PATH` - Path to a file which contains additional capability options as JSON file (eg. config.json)
 
@@ -183,11 +182,11 @@ testcafe "lambdatest:Chrome","lambdatest:Chrome@74.0:Windows 8" tests/
 
 
 
-## About TestMu AI (Formerly LambdaTest)
+## About TestMu AI (Formerly TestMu AI (Formerly LambdaTest))
 
 
 
-TestMu AI (Formerly LambdaTest) is a cloud based selenium grid infrastructure that can help you run automated cross browser compatibility tests on 2000+ different browser and operating system environments. TestMu AI (Formerly LambdaTest) supports all programming languages and frameworks that are supported with Selenium, and have easy integrations with all popular CI/CD platforms. It's a perfect solution to bring your selenium automation testing to cloud based infrastructure that not only helps you increase your test coverage over multiple desktop and mobile browsers, but also allows you to cut down your test execution time by running tests on parallel.
+TestMu AI (Formerly TestMu AI (Formerly LambdaTest)) is a cloud based selenium grid infrastructure that can help you run automated cross browser compatibility tests on 2000+ different browser and operating system environments. TestMu AI (Formerly TestMu AI (Formerly LambdaTest)) supports all programming languages and frameworks that are supported with Selenium, and have easy integrations with all popular CI/CD platforms. It's a perfect solution to bring your selenium automation testing to cloud based infrastructure that not only helps you increase your test coverage over multiple desktop and mobile browsers, but also allows you to cut down your test execution time by running tests on parallel.
 
 
 
@@ -197,15 +196,15 @@ TestMu AI (Formerly LambdaTest) is a cloud based selenium grid infrastructure th
 
 Licensed under the [MIT license](./LICENSE).
 
-## TestMu AI (Formerly LambdaTest) Community
+## TestMu AI (Formerly TestMu AI (Formerly LambdaTest)) Community
 
 Connect with testers and developers in the [TestMu AI Community](https://community.testmuai.com/). Ask questions, share what you are building, and discuss best practices in test automation and DevOps.
 
-## TestMu AI (Formerly LambdaTest) Certifications
+## TestMu AI (Formerly TestMu AI (Formerly LambdaTest)) Certifications
 
 Earn free [TestMu AI Certifications](https://www.testmuai.com/certifications/) for testers, developers, and QA engineers. Validate your skills in Selenium, Cypress, Playwright, Appium, Espresso and more. Industry-recognized, shareable on LinkedIn, and built by practitioners, not marketers.
 
-## Learning Resources by TestMu AI (Formerly LambdaTest)
+## Learning Resources by TestMu AI (Formerly TestMu AI (Formerly LambdaTest))
 
 Learn modern testing through tutorials, guides, videos, and weekly updates:
 

@@ -2,199 +2,117 @@
 
 <p align="center">
   <a href="https://www.testmuai.com/"><img src="https://img.shields.io/badge/MADE%20BY%20TestMu%20AI-000000.svg?style=for-the-badge&labelColor=000" alt="Made by TestMu AI"></a>
+  <a href="https://www.npmjs.com/package/mobile-testcafe-browser-provider-lambdatest"><img src="https://img.shields.io/npm/v/mobile-testcafe-browser-provider-lambdatest.svg?style=for-the-badge&labelColor=000000" alt="npm version"></a>
   <a href="https://community.testmuai.com/"><img src="https://img.shields.io/badge/Join%20the%20community-blueviolet.svg?style=for-the-badge&labelColor=000000" alt="Community"></a>
 </p>
 
+## Getting Started
 
+[TestMu AI](https://www.testmuai.com/) (Formerly LambdaTest) is the world's first full-stack AI Agentic Quality Engineering platform that empowers teams to test intelligently, smarter, and ship faster. Built for scale, it offers a full-stack testing cloud with 10K+ real devices and 3,000+ browsers. With AI-native test management, MCP servers, and agent-based automation, TestMu AI supports Selenium, Appium, Playwright, and all major frameworks.
 
+With TestMu AI (Formerly LambdaTest), you can run Mobile TestCafe tests on real devices and browsers in the cloud using this npm plugin.
 
-This plugin integrates [TestCafe](http://devexpress.github.io/testcafe) with the TestMu AI (Formerly LambdaTest) Testing Cloud.
+- [Sign up on TestMu AI](https://www.testmuai.com/register/) (Formerly LambdaTest).
+- Follow the [TestMu AI Documentation](https://www.testmuai.com/support/docs/) for the full setup walkthrough.
 
+### Prerequisites
 
+- Node.js and npm (latest stable)
+- TestCafe: `npm install -g testcafe`
+- A TestMu AI (Formerly LambdaTest) account with your username and access key
 
 ## Install
 
-
-
 ```sh
-
 $ npm install mobile-testcafe-browser-provider-lambdatest
-
 ```
-
-
 
 ## Usage
 
-Before using this plugin, save the TestMu AI (Formerly LambdaTest) username and access key to environment variables `LT_USERNAME` and `LT_ACCESS_KEY`, as described in TestMu AI (Formerly LambdaTest) Documentation.
-
-
+Before using this plugin, save the TestMu AI (Formerly LambdaTest) username and access key to environment variables `LT_USERNAME` and `LT_ACCESS_KEY`, as described in the TestMu AI Documentation.
 
 You can determine the available real devices aliases by running
 
-
-
 ```sh
-
 $ testcafe -b lambdatest
-
 ```
-
-
 
 If you run tests from the command line, use the browser alias when specifying browsers:
 
 For Single Configuration
 
-
-
 ```sh
-
 $ testcafe "lambdatest:Galaxy S8@9:android" "path/to/test/file.js"
-
 ```
-
-
 
 For Parallel/Multiple Configuration
 
-
-
 ```sh
-
 $ testcafe "lambdatest:Galaxy S8@9:android","lambdatest:Galaxy S8@7:android" "path/to/test/file.js"
-
 ```
-
-
 
 ## Build Plugin Locally (Development Mode)
 
-
-
-1.  Clone this repository,
-
-2.  Rename Project
+1. Clone this repository,
+2. Rename Project
 
 ```sh
-
 $ mv mobile-testcafe-browser-provider-lambdatest lambdatest
-
 ```
 
 3. Go to the project path
 
 ```sh
-
 $ cd lambdatest
-
 ```
 
 4. Install Packages and Build
 
 ```sh
-
 $ npm i
-
 $ npm run build
-
 ```
 
-5. Link Testcafe with lambdatest
+5. Link TestCafe with the browser provider
 
 ```sh
-
 $ sudo npm link
-
 ```
-
-6. [See this for Credentials](#usage)
-
-
 
 ## Configuration
 
-
-
 Use the following environment variables to set additional configuration options:
 
-
-
- - `LT_TEST_NAME` - Test name on TestMu AI (Formerly LambdaTest).
-
- - `LT_BUILD` - Build name on TestMu AI (Formerly LambdaTest).
-
- - `LT_CAPABILITY_PATH` - Path to a file which contains additional capability options as JSON file (eg. config.json)
-
- - `LT_LOGFILE` - Logfile You can provide a specific path to this file. If you won't provide a path then the logs would be saved in your present working directory by the filename: tunnel.log.
-
- - `LT_VERBOSE` - true or false.
-
- - `LT_W3C` - true or false.
-
- - `LT_ENABLE_TRACE` - true or false.
-
- - `LT_PROXY_HOST` - Hostname/IP of proxy, this is a mandatory value.
-
- - `LT_PROXY_PORT` - Port for the proxy, by default it would consider 3128 if proxyhost is used For Basic Authentication, we use the below proxy options.
-
- - `LT_PROXY_USER` - Username for connecting to proxy, mandatory value for using 'proxypass'.
-
- - `LT_PROXY_PASS` - Password for the USERNAME option.
-
- - `LT_TUNNEL_NAME` - Human readable tunnel identifier (Name of the tunnel).
-
- - `LT_DIR` - Path of the local folder you want to test.
-
- - `LT_CONSOLE` - true or false.
-
- - `LT_NETWORK` - true or false.
-
- - `LT_VIDEO` - true or false.
-
- - `LT_SCREENSHOT` - true or false.
-
- - `LT_TUNNEL_NUMBER` - Number of tunnel to be spawned at a time.
-
- - `LOAD_BALANCED_MODE` - Load balancing between multiple tunnels spawned.
-
-
+- `LT_TEST_NAME` - Test name on TestMu AI (Formerly LambdaTest).
+- `LT_BUILD` - Build name on TestMu AI (Formerly LambdaTest).
+- `LT_CAPABILITY_PATH` - Path to a file which contains additional capability options as JSON file (eg. config.json)
+- `LT_LOGFILE` - Logfile. You can provide a specific path to this file. If you won't provide a path then the logs would be saved in your present working directory by the filename: tunnel.log.
+- `LT_VERBOSE` - true or false.
+- `LT_W3C` - true or false.
+- `LT_ENABLE_TRACE` - true or false.
+- `LT_PROXY_HOST` - Hostname/IP of proxy, this is a mandatory value.
+- `LT_PROXY_PORT` - Port for the proxy, by default it would consider 3128 if proxyhost is used. For Basic Authentication, we use the below proxy options.
+- `LT_PROXY_USER` - Username for connecting to proxy, mandatory value for using 'proxypass'.
+- `LT_PROXY_PASS` - Password for the USERNAME option.
+- `LT_TUNNEL_NAME` - Human readable tunnel identifier (Name of the tunnel).
+- `LT_DIR` - Path of the local folder you want to test.
+- `LT_CONSOLE` - true or false.
+- `LT_NETWORK` - true or false.
+- `LT_VIDEO` - true or false.
+- `LT_SCREENSHOT` - true or false.
+- `LT_TUNNEL_NUMBER` - Number of tunnel to be spawned at a time.
+- `LOAD_BALANCED_MODE` - Load balancing between multiple tunnels spawned.
 
 Example:
 
-
-
 ```sh
-
 export LT_RESOLUTION="1920x1080"
-
 export LT_TEST_NAME="Test TestCafe"
-
 export LT_BUILD="Build x"
-
 export LT_TUNNEL_NUMBER=2
-
 export LOAD_BALANCED_MODE=true
-
 testcafe "lambdatest:Chrome","lambdatest:Chrome@74.0:Windows 8" tests/
-
 ```
-
-
-
-## About TestMu AI (Formerly LambdaTest)
-
-
-
-TestMu AI (Formerly LambdaTest) is a cloud based selenium grid infrastructure that can help you run automated cross browser compatibility tests on 2000+ different browser and operating system environments. TestMu AI (Formerly LambdaTest) supports all programming languages and frameworks that are supported with Selenium, and have easy integrations with all popular CI/CD platforms. It's a perfect solution to bring your selenium automation testing to cloud based infrastructure that not only helps you increase your test coverage over multiple desktop and mobile browsers, but also allows you to cut down your test execution time by running tests on parallel.
-
-
-
-## License
-
-
-
-Licensed under the [MIT license](./LICENSE).
 
 ## TestMu AI (Formerly LambdaTest) Community
 
@@ -212,6 +130,7 @@ Learn modern testing through tutorials, guides, videos, and weekly updates:
 * [TestMu AI Learning Hub](https://www.testmuai.com/learning-hub/)
 * [TestMu AI on YouTube](https://www.youtube.com/@TestMuAI)
 * [TestMu AI Newsletter](https://www.testmuai.com/newsletter/)
+
 
 ## LambdaTest is Now TestMu AI
 
@@ -234,3 +153,7 @@ What started as a high-performance cloud testing platform has transformed into a
 ## Support
 
 Got a question? Email [support@testmuai.com](mailto:support@testmuai.com) or chat with us 24x7 from our chat portal.
+
+## License
+
+Licensed under the [MIT license](./LICENSE).

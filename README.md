@@ -131,9 +131,6 @@ Learn modern testing through tutorials, guides, videos, and weekly updates:
 * [TestMu AI on YouTube](https://www.youtube.com/@TestMuAI)
 * [TestMu AI Newsletter](https://www.testmuai.com/newsletter/)
 
-## License
-
-Licensed under the [MIT license](./LICENSE).
 
 ## LambdaTest is Now TestMu AI
 
@@ -156,3 +153,7 @@ What started as a high-performance cloud testing platform has transformed into a
 ## Support
 
 Got a question? Email [support@testmuai.com](mailto:support@testmuai.com) or chat with us 24x7 from our chat portal.
+
+## License
+
+Licensed under the [MIT license](./LICENSE).
